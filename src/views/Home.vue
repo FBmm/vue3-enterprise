@@ -1,18 +1,20 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+<!--    <BannerCarousel></BannerCarousel>-->
+    <BannerCarouselLoop></BannerCarouselLoop>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import BannerCarousel from '@/components/Carousel/BannerCarousel.vue';
+import BannerCarouselLoop from "@/components/Carousel/BannerCarouselLoop.vue";
 
 export default defineComponent({
   name: 'Home',
   components: {
-    HelloWorld,
+    BannerCarouselLoop,
+    BannerCarousel,
   },
 });
 </script>
