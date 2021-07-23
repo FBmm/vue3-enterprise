@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start": "npm run serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "animejs": "^3.2.1",
     "core-js": "^3.6.5",
     "element-plus": "^1.0.2-beta.45",
     "vue": "^3.0.0",
