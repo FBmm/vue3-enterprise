@@ -1,0 +1,14 @@
+.custom-pointer {
+  position: fixed;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  background: url("../assets/pointer.gif") center/cover;
+}
+
+.custom-pointer--fixed {
+  position: absolute;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+}

@@ -7,8 +7,8 @@
   <div class="lottery-rotary-disc">
     <div class="lottery-rotary-disc__wrap">
       <div class="lottery-rotary-disc__circle" id="circle"></div>
-      <div class="lottery-btn-box">
-        <img class="lottery-btn" id="lotteryBtn" src="../../assets/start-lottery-btn@2x.png" alt="" @click="onStart">
+      <div class="lottery-btn-box" v-pointer="!isTurning" @click="onStart">
+        <img class="lottery-btn" :class="!isTurning ? 'stop-turning' : ''" id="lotteryBtn" src="../../assets/start-lottery-btn@2x.png" alt="">
       </div>
     </div>
   </div>
@@ -20,6 +20,7 @@ export default defineComponent({
   name: 'RotaryDisc',
   setup() {
     let animation: any;
+    const isTurning = ref(false)
     onMounted(() => {
       const el = document.getElementById('circle')
       animation = anime({
@@ -30,19 +31,19 @@ export default defineComponent({
         autoplay: false,
         begin() {
           console.log('抽奖开始')
-          const el = document.getElementById('lotteryBtn')
-          el.style.cursor = 'auto'
-          el.style.transform = 'scale(1)'
+          isTurning.value = true
         },
         complete(anim) {
           console.log('抽奖结束')
+          isTurning.value = false
         }
       })
     })
     return {
+      isTurning,
       onStart() {
         animation.play()
-      }
+      },
     }
   },
 })
@@ -70,15 +71,17 @@ export default defineComponent({
     left: 50%;
     transform: translate(-50%, -50%);
     img {
+      transition: all .3s;
       width: 100%;
       height: 100%;
-      cursor: url("../../assets/pointer.png"), pointer;
-      transition: all .3s;
-      &:hover {
-        transform: scale(1.1);
-      }
+    }
+    &:hover .stop-turning{
+      transform: scale(1.1);
     }
   }
 }
+
+</style>
+<style lang="scss">
 
 </style>
